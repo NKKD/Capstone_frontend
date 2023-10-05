@@ -13,14 +13,14 @@ export default class RobotService {
 
     async getRobotIMU(){
         let response = await fetch(this.baseUrl + "/api/robot/imu");
-        let games = await response.json()
-        return games;
+        let robotConnectionResponse = await response.json()
+        return robotConnectionResponse;
     }
 
     async getRobotVoltage(){
         let response = await fetch(this.baseUrl + "/api/robot/voltage");
-        let games = await response.json()
-        return games;
+        let robotConnectionResponse = await response.json()
+        return robotConnectionResponse;
     }
 
     async postRGBEffect(RGBEffectID) {

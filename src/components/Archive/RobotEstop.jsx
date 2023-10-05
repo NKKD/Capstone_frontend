@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RobotService from '../services/robot-service'; // Assuming your service is located in this path
+import RobotService from '../../services/robot-service.js'; // Assuming your service is located in this path
 
 const robotService = new RobotService('http://localhost:3000');
 

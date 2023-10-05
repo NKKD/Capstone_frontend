@@ -16,8 +16,8 @@ function RobotJoystick() {
     async function handleMovementSubmit(movementData) {
         // Update state with the new joystick movement data, if required
         setRobotMovement({
-            linearX: movementData.x,  // Adjust based on the structure of movementData
-            linearY: movementData.y,
+            linearX: movementData.y,
+            linearY: -movementData.x,
             angularZ: robotMovement.angularZ
         });
 
@@ -39,18 +39,32 @@ function RobotJoystick() {
     }
 
     return (
-        <div>
-            <Joystick
-                size={100}
-                sticky={false}
-                baseColor="blue"
-                stickColor="red"
-                move={handleMovementSubmit}
-                stop={handleEstopClick}
-            />
-            {error && <p>Error: {error}</p>}
-            {result && <p>Response: {JSON.stringify(result)}</p>}
+        <div className="card col-sm-12 col-md-6 col-lg-3 m-2">
+            <div className="d-flex justify-content-center">
+                <Joystick
+                    size={150}
+                    sticky={false}
+                    baseColor="blue"
+                    stickColor="red"
+                    move={handleMovementSubmit}
+                    stop={handleEstopClick}
+                />
+            </div>
+            <button className="btn btn-danger m-3" onClick={handleEstopClick}>
+                E-Stop
+            </button>
+            {error &&
+                <div className="alert alert-danger mt-3" role="alert">
+                    Error: {error}
+                </div>
+            }
+            {result &&
+                <div className="alert alert-success mt-3" role="alert">
+                    {JSON.stringify(result.result)}
+                </div>
+            }
         </div>
+
     );
 }
 
