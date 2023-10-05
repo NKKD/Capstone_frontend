@@ -5,6 +5,8 @@ import RobotVoltage from "./RobotVoltage.jsx";
 import RobotRGBEffect from "./RobotRGBEffect.jsx";
 import RobotMovementControl from "./RobotMovement.jsx";
 import RobotEstop from "./RobotEstop.jsx";
+import RobotJoystick from "./RobotJoystick.jsx";
+import RobotAugularZMovement from "./RobotAugularZSlider.jsx";
 function App() {
   return (
     <>
@@ -14,6 +16,8 @@ function App() {
         <RobotRGBEffect/>
         <RobotMovementControl/>
         <RobotEstop/>
+        <RobotJoystick/>
+        <RobotAugularZMovement/>
     </>
   )
 }
