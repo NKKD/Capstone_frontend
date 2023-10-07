@@ -38,6 +38,8 @@ function RobotJoystick() {
         }
     }
 
+
+
     return (
         <div className="card col-sm-12 col-md-6 col-lg-3 m-2">
             <div className="d-flex justify-content-center">
@@ -64,7 +66,6 @@ function RobotJoystick() {
                 </div>
             }
         </div>
-
     );
 }
 
