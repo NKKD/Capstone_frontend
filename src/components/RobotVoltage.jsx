@@ -19,6 +19,7 @@ function RobotVoltage() {
 
         try {
             const data = await robotService.getRobotVoltage();
+            console.log(data)
             setVoltageData(data);
             // Check if data.data is a number and not NaN
             if (!isNaN(data.data) && typeof data.data === 'number') {
@@ -35,7 +36,7 @@ function RobotVoltage() {
     function startFetchingData() {
         if (!intervalId) {
             fetchVoltageData(); // Initial fetch
-            const id = setInterval(fetchVoltageData, 60000*5); // Fetch every 5 minute
+            const id = setInterval(fetchVoltageData, 1000*60); // Fetch every 1 min
             setIntervalId(id);
         }
     }

@@ -6,7 +6,7 @@ function App() {
     <>
         <RobotConnection/>
         {/*for testing purpose, enable RobotApp to see every component*/}
-        <RobotApp/>
+        {/*<RobotApp/>*/}
     </>
   )
 }

@@ -17,7 +17,7 @@ export default class RobotDatabaseService {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                ...voltage,
+                "voltage":voltage.data,
             })
         });
         if (!response.ok) {
