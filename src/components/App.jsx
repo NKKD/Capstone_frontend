@@ -5,6 +5,7 @@ function App() {
   return (
     <>
         <RobotConnection/>
+        {/*for testing purpose, enable RobotApp to see every component*/}
         <RobotApp/>
     </>
   )

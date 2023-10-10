@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import RobotService from "../services/robot-service.js";
-import RobotApp from "./RobotApp.jsx"
-
-const robotService = new RobotService("http://localhost:3000");
+import RobotApp from "./RobotApp.jsx";
 
 function RobotInfo() {
     const [robotStatus, setRobotStatus] = useState(null);
@@ -10,31 +8,28 @@ function RobotInfo() {
     const [robotPortNumber, setRobotPortNumber] = useState("9090");
     const [error, setError] = useState(null);
     const [isResponseOk, setIsResponseOk] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+
+    const robotService = new RobotService("http://localhost:3000");
 
     async function fetchRobotInfo() {
         setError(null);
-        setIsLoading(true);
+        setIsResponseOk(false);  // Resetting the state to handle consecutive calls
 
         try {
-            const response = await robotService.getRobotConnection(robotIP, robotPortNumber)
-            setIsResponseOk(response.ok);
-
+            const response = await robotService.getRobotConnection(robotIP, robotPortNumber);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-
             const data = await response.json();
             setRobotStatus(data);
+            setIsResponseOk(true);
         } catch (err) {
             setError(err.message);
-        } finally {
-            setIsLoading(false);
         }
     }
 
     if (isResponseOk) {
-        return <RobotApp/>;
+        return <RobotApp />;
     }
 
     return (
@@ -66,14 +61,8 @@ function RobotInfo() {
                     <button onClick={fetchRobotInfo} className="btn btn-primary m-2">
                         Fetch Robot Info
                     </button>
-                    {isLoading &&
-                        <div className="d-flex justify-content-center m-2">
-                            <div className="spinner-border" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        </div>}
-                    {robotStatus && <div className="mt-3"> {robotStatus} </div>}
-                    {error && <div className="mt-3 alert alert-danger"> {error} </div>}
+                    {robotStatus && <div className="mt-3">{robotStatus}</div>}
+                    {error && <div className="mt-3 alert alert-danger">{error}</div>}
                 </div>
             </div>
         </div>
