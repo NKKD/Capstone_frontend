@@ -1,7 +1,12 @@
 .robot-connection-div{
     display: flex;
     justify-content: center;
-    align-items: center;
     padding-top: 100px;
-    width: 50%;
+}
+
+.robot-ip-and-port-form{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 400px;
 }

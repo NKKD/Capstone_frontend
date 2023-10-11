@@ -1,13 +1,12 @@
 import '../css/App.css'
 import RobotConnection from "./RobotConnection.jsx";
 import RobotApp from "./RobotApp.jsx";
+import ProtectedLayout from './layouts/ProtectedLayout';
 function App() {
   return (
-    <>
+    <ProtectedLayout>
         <RobotConnection/>
-        {/*for testing purpose, enable RobotApp to see every component*/}
-        {/*<RobotApp/>*/}
-    </>
+    </ProtectedLayout>
   )
 }
 export default App

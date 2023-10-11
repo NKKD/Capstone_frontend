@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RobotService from "../services/robot-service.js";
 import RobotApp from "./RobotApp.jsx";
+import '../css/RobotConnection.css'
 
 function RobotInfo() {
     const [robotStatus, setRobotStatus] = useState(null);
@@ -30,36 +31,37 @@ function RobotInfo() {
         isResponseOk
             ? <RobotApp />
             : (
-                <div className="col-sm-12 col-md-6 col-lg-6 m-2">
-                    <div className="row justify-content-center">
-                        <div className="col-md-6">
-                            <div className="form-group">
-                                <label htmlFor="robotIP">Enter Robot IP:</label>
-                                <input
-                                    id="robotIP"
-                                    type="text"
-                                    value={robotIP}
-                                    onChange={(e) => setRobotIP(e.target.value)}
-                                    placeholder="Robot IP"
-                                    className="form-control text-center"
-                                />
+                <div className="robot-connection-div">
+                    <div className="m-2">
+                        <div className="robot-ip-and-port-form m-2">
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <label htmlFor="robotIP">Enter Robot IP:</label>
+                                    <input
+                                        id="robotIP"
+                                        type="text"
+                                        value={robotIP}
+                                        onChange={(e) => setRobotIP(e.target.value)}
+                                        placeholder="Robot IP"
+                                        className="form-control text-center"
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="robotPortNumber">Robot Port Number:</label>
+                                    <input
+                                        id="robotPortNumber"
+                                        type="text"
+                                        value={robotPortNumber}
+                                        onChange={(e) => setRobotPortNumber(e.target.value)}
+                                        placeholder="Enter Robot Port Number"
+                                        className="form-control text-center"
+                                    />
+                                </div>
+                                <button onClick={fetchRobotInfo} className="btn btn-primary m-2">
+                                    Connect To Robot
+                                </button>
+                                {error && <div className="mt-3 alert alert-danger">{error}</div>}
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="robotPortNumber">Robot Port Number:</label>
-                                <input
-                                    id="robotPortNumber"
-                                    type="text"
-                                    value={robotPortNumber}
-                                    onChange={(e) => setRobotPortNumber(e.target.value)}
-                                    placeholder="Enter Robot Port Number"
-                                    className="form-control text-center"
-                                />
-                            </div>
-                            <button onClick={fetchRobotInfo} className="btn btn-primary m-2">
-                                Connect To Robot
-                            </button>
-                            {/*{robotStatus && <div className="mt-3">{robotStatus}</div>}*/}
-                            {error && <div className="mt-3 alert alert-danger">{error}</div>}
                         </div>
                     </div>
                 </div>
